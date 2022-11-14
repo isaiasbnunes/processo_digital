@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--  Dicionando Links do cabeçalho  ___  Fragments headerfiles -->
+<th:block th:include="fragments/layout.html :: headerfiles"> </th:block> 
+</head>
+<body>
+  <!--  adicionando Menu  ___  Fragments NAVLINKS -->
+  <div th:replace="fragments/layout :: navlinks"></div>
+
+	
+	<div class="container-fluid">
+	<div class="content">
+	
+            <div class="row">
+                <div class="col-md-6 offset-md-3
+                            text-center">
+                            
+                            
+                            <div class="card">
+							  <div class="card-header">
+							    Consultar Processo
+							  </div>
+							  <div class="card-body">
+							   	  <form class="row g-3">
+			 
+								  <div class="col-auto">
+								   
+								    <input type="text" class="form-control" id="inputPassword2" placeholder="Número do processo">
+								  </div>
+								  <div class="col-auto">
+								    <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+								  </div>
+								</form>
+							  </div>
+							</div>
+                            
+                            
+                            
+                            
+               
+                
+                
+                </div>
+            </div>
+        
+		</div>
+	</div>
+	
+	
+	
+   <!--  adicionando Footer  ___  Fragments FOOTER -->
+  <div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

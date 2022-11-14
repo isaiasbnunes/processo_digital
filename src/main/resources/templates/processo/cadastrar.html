@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--  Dicionando Links do cabeçalho  ___  Fragments headerfiles -->
+<th:block th:include="fragments/layout.html :: headerfiles"> </th:block> 
+</head>
+<body>
+  <!--  adicionando Menu  ___  Fragments NAVLINKS -->
+  <div th:replace="fragments/layout :: navlinks"></div>
+
+	
+	<div class="container-fluid">
+	<div class="content">
+	
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                            
+                            
+                            <div class="card">
+							  <div class="card-header">
+							    Cadastrar Processo
+							  </div>
+							  <div class="card-body">
+							   <form class="row g-3" action="/processo/salvar"
+						th:object="${processo}" method="POST">
+			 						
+			 						<div class="mb-3">
+									  <label for="numero" class="form-label">Numero</label>
+									  <input type="text" class="form-control" id="numero" th:field="*{numero}"
+									           placeholder="Numero processo" required >
+									</div>
+									<div class="mb-3">
+									  <label for="assunto" class="form-label">Assunto</label>
+									  <input type="text" class="form-control" id="assunto"
+									                  th:field="*{assunto}"  placeholder="Assunto">
+									</div>
+									
+									 <div class="mb-3">
+							          <label>Responsavel</label> <select th:field="*{responsavel}"
+											class="form-control">
+											<option th:each="f: ${listFuncionarios}" th:value="${f.id}"
+												th:text="${f.nome}"></option>
+										</select>
+									 </div>
+									 
+									 <div class="mb-3">
+							          <label>Setor</label> <select th:field="*{setor}"
+											class="form-control">
+											<option th:each="f: ${listSetor}" th:value="${f.id}"
+												th:text="${f.nome}"></option>
+										</select>
+									 </div>
+									 
+									 <div class="mb-3">
+										<label>Data abertura</label> 
+										<input type="date"  th:value="${dataAbertura}"
+												class="form-control" id="dataAbertura"
+												autofocus="autofocus" th:field="*{dataAbertura}"  />
+								     </div>
+				
+							  
+								
+									<input type="hidden" id="id" th:field="*{id}" value="" />
+									<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+								  
+								</form>
+							  </div>
+							</div>
+                 
+                
+                </div>
+            </div>
+        
+		</div>
+	</div>
+	
+	
+	
+   <!--  adicionando Footer  ___  Fragments FOOTER -->
+  <div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

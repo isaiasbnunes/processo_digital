@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--  Dicionando Links do cabeçalho  ___  Fragments headerfiles -->
+<th:block th:include="fragments/layout.html :: headerfiles"> </th:block> 
+</head>
+<body>
+  <!--  adicionando Menu  ___  Fragments NAVLINKS -->
+  <div th:replace="fragments/layout :: navlinks"></div>
+
+	
+	<div class="container-fluid">
+	<div class="content">
+	
+            <div class="row justify-content-md-center">
+                <div class="col-4">
+                            
+                            
+                            <div class="card">
+							  <div class="card-header">
+							   Processo
+							   <h2> <span style="color: #f00;" th:text="${numero}"></span> </h2> 
+							  </div>
+							  <div class="card-body">
+							   <form class="row g-3" action="/processo/salvar"
+						th:object="${processo}" method="POST">
+			 						
+			 					
+									<div class="mb-3">
+									  <label for="assunto" class="form-label">Assunto</label>
+									                  
+									  <input type="text" th:value="${assunto}" class="form-control"
+					          disabled id="assunto" >
+									                  
+									</div>
+									
+									 <div class="mb-3">
+							          <label>Responsavel</label>
+											 <input type="text" th:value="${responsavel}" class="form-control"
+					          disabled id="responsavel" >
+									 </div>
+									 
+									 <div class="mb-3">
+							          <label>Setor</label>
+							          <input type="text" th:value="${setor}" class="form-control"
+					          disabled id="setor" >
+									 </div>
+									 
+									 <div class="mb-3">
+										<label>Data abertura</label> 
+										<input type="text" th:value="${dataAbertura}" class="form-control"
+					          disabled id="dataAbertura" >
+								     </div>
+				
+							 
+								</form>
+							  </div>
+							</div>
+                 
+                
+                </div>
+                
+                <div class="col-8">
+              		   <div class="card">
+							  <div class="card-header">
+							      <div class="row">
+								    <div class="col">
+								      Tramitação 
+								    </div>
+								  </div>
+							    
+							  </div>
+							  <div class="card-body">
+									
+									<form class="row g-3" action="/processo/tramitar/salvar"
+						th:object="${tramitar}" method="POST">
+			 						
+									<div class="mb-3">
+									  <label for="obs" class="form-label">Informações Adicionais</label>
+									  <input type="text" class="form-control" id="obs"
+									                  th:field="*{obs}"  placeholder="obs">
+									</div>
+
+									 <div class="mb-3">
+							          <label>Destino</label> <select th:field="*{destino}"
+											class="form-control">
+											<option th:each="f: ${listSetor}" th:value="${f.id}"
+												th:text="${f.nome}"></option>
+										</select>
+									 </div>
+									 
+									
+									<button type="submit" class="btn btn-primary btn-sm">Tramitar</button>
+								  
+								</form>
+									
+							  </div>
+							</div>
+                 
+                </div>
+                
+            </div>
+        
+		</div>
+	</div>
+	
+	
+	
+   <!--  adicionando Footer  ___  Fragments FOOTER -->
+  <div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

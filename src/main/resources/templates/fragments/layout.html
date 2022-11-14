@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:fragment="headerfiles">
+<title>Processos</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <script src="https://kit.fontawesome.com/c5e4bf757a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+  <link rel="stylesheet" th:href="@{/assets/simple-datatables/style.css}"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <div th:fragment="navlinks">
+ 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/processo/consultar">Consultar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/processo/listar">Listar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/processo/cadastrar">Cadastrar</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+  </div>
+  
+
+
+  <!-- ======= Footer ======= -->
+  <div th:fragment="footer">
+  <footer id="footer" class="footer">
+ 
+    <div class="credits">
+       
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script type="text/javascript" th:src="@{/assets/simple-datatables/simple-datatables.js}"></script>
+	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+	
+  </div>
+   <!-- ======= FIM  Footer ======= -->
+
+</body>
+</html>
