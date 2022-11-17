@@ -13,4 +13,7 @@ public interface TramitarRepository extends JpaRepository<Tramitar, Long>{
 
 	@Query(value = "SELECT t FROM Tramitar t where t.processo = :processo" )
 	public List<Tramitar> findByProcesso(@Param("processo") Processo processo);
+	
+	//SELECT MAX(ID) FROM tabela
+	
 }

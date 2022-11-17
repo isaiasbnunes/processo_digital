@@ -37,7 +37,7 @@
 					      <th scope="col">Assunto</th>
 					      <th scope="col">Responsável</th>
 					      <th scope="col">Data Abertura</th>
-					      <th scope="col">Editar</th>
+					    
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -45,16 +45,16 @@
 					     
 					      <td th:text="${c.id}"></td>
 						  <td th:text="${c.numero}"></td>
-						  <td th:text="${c.assunto}"></td>
+						  <td>
+						  <a th:href="@{/processo/editar/{id}(id=${c.id})}"> 
+							 	<span th:text="${c.assunto}"></span>
+								
+							</a> 
+						  </td>
 						  <td th:text="${c.responsavel}"></td>
 						  <td th:text="${c.dataAbertura}"></td>
 						  
-						  <td> 
-							<a th:href="@{/processo/editar/{id}(id=${c.id})}"> 
-							    <i class="fa-solid fa-pen-to-square"></i>
-							
-							</a> 
-						  </td>
+						
 					     
 					    </tr>
 					    

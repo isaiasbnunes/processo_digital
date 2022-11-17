@@ -71,9 +71,11 @@
 								     
 								    </div>
 								    <div class="col text-left">
-								    <a th:href="@{/processo/tramitar/{id}(id=${id})}">
-								        Nova tramitação</a>
-								    </div>
+									    <span th:if="${isOwner_processo}">
+										    <a th:href="@{/processo/tramitar/{id}(id=${id})}">
+										        Nova tramitação</a>
+										 </span>
+									</div>
 								  </div>
 							    
 							  </div>

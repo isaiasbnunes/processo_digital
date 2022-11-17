@@ -1,5 +1,6 @@
 package net.braga.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.braga.model.Funcionario;
 import net.braga.model.Processo;
 import net.braga.model.Tramitar;
 import net.braga.repository.FuncionarioRepository;
 import net.braga.repository.ProcessoRepository;
 import net.braga.repository.SetorRepository;
 import net.braga.repository.TramitarRepository;
+import net.braga.security.UserLogin;
 
 @Controller
 public class ProcessoController {
@@ -30,6 +33,9 @@ public class ProcessoController {
 	
 	@Autowired
 	private TramitarRepository tramitarRepository;
+	
+	@Autowired
+	private UserLogin userLogin;
 	
 	private Processo processoNumber;
 	
@@ -109,6 +115,7 @@ public class ProcessoController {
 	public ModelAndView editar(@PathVariable("id") Long id) {
 		
 		Optional<Processo> processo = processoRepository.findById(id);
+		List<Tramitar> listTramitacoes = tramitarRepository.findByProcesso(processo.get());
 		
 		ModelAndView mv = new ModelAndView("processo/editar"); 
 		mv.addObject("processo", processo);
@@ -118,9 +125,25 @@ public class ProcessoController {
 		mv.addObject("responsavel", processo.get().getResponsavel());
 		mv.addObject("setor", processo.get().getSetor());
 		mv.addObject("dataAbertura", processo.get().getDataAbertura());
-		mv.addObject("tramitacoes", tramitarRepository.findByProcesso(processo.get()));
-	
+		mv.addObject("tramitacoes", listTramitacoes);
+		mv.addObject("isOwner_processo", funcionarioPodeTramitar(listTramitacoes));
+		
 		return mv;
+	}
+	
+	
+	private boolean funcionarioPodeTramitar(List<Tramitar> list ) {
+		 Tramitar t = list.get(list.size()-1);
+		 Funcionario user = userLogin.getUserLogin();
+		 
+		 if(t.getDestino() == user.getSetor()) {
+			 return true;
+		 }
+		 
+		 System.out.println(">>>>>>>> ultimo processo: "+t.getProcesso().getNumero());
+		 System.out.println(">>>>>>>> destino processo: "+t.getDestino());
+		 System.out.println(">>>>>>>> setor usuario: "+user.getSetor());
+		return false;
 	}
 }
 

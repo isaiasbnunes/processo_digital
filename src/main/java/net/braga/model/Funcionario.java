@@ -4,10 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import net.braga.enums.Role;
 
 @Entity
 public class Funcionario implements Serializable{
@@ -26,8 +31,18 @@ public class Funcionario implements Serializable{
 	private String telefone;
 	private String obs;
 	
+	private String username;
+	private String password;
+	private String email;
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;  
+	
+	@Transient
+	private String confirmPassword;
+	
 	@ManyToOne
-	private Setor destino;
+	private Setor setor;
 	
 	public Long getId() {
 		return id;
@@ -66,11 +81,41 @@ public class Funcionario implements Serializable{
 		this.obs = obs;
 	}
 	
-	public Setor getDestino() {
-		return destino;
+	public String getUsername() {
+		return username;
 	}
-	public void setDestino(Setor destino) {
-		this.destino = destino;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	public Setor getSetor() {
+		return setor;
+	}
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 	@Override
 	public String toString() {
