@@ -22,11 +22,13 @@
 							    Consultar Processo
 							  </div>
 							  <div class="card-body">
-							   	  <form class="row g-3">
+							   	  <form class="row g-3" action="/processo/consultar_resposta" th:object="${processo}"
+						method="POST">
 			 
 								  <div class="col-auto">
 								   
-								    <input type="text" class="form-control" id="inputPassword2" placeholder="Número do processo">
+								    <input type="text" class="form-control"
+								     th:field="*{numero}"  id="numero" placeholder="Número do processo">
 								  </div>
 								  <div class="col-auto">
 								    <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
@@ -36,12 +38,17 @@
 							</div>
                             
                             
-                            
-                            
-               
+                  
+                <span style="margin-top: 10px ;" th:if="${msg == 'not_find'}">
+				       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+								<strong>Processo não encontrado!</strong> Verifique o numero digitado!
+					   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				 </div></span>
                 
                 
                 </div>
+                
+                            
             </div>
         
 		</div>

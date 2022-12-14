@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--  Dicionando Links do cabeçalho  ___  Fragments headerfiles -->
+<th:block th:include="fragments/layout.html :: headerfiles"> </th:block> 
+</head>
+<body>
+  <!--  adicionando Menu  ___  Fragments NAVLINKS -->
+  <div th:replace="fragments/layout :: navlinks"></div>
+
+	
+	<div class="container-fluid">
+	<div class="content">
+	
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                            
+                            
+                            <div class="card">
+							  <div class="card-header">
+							    Cadastrar Processo
+							  </div>
+							  <div class="card-body">
+						<form action="/user/editar"
+						th:object="${user}" method="POST">
+						
+						<div class="mb-3">
+						  <label for="nome" class="form-label">Nome</label>
+						  <input type="text" class="form-control" id="nome" th:field="*{nome}"
+						           required >
+						</div>
+						
+						<div class="mb-3">
+						  <label for="email" class="form-label">Email</label>
+						  <input type="text" class="form-control" id="email" th:field="*{email}"
+						           required >
+						</div>
+						
+						<div class="mb-3">
+						  <label for="user" class="form-label">Usuário</label>
+						  <input type="text" class="form-control" id="user" disabled
+						                  th:field="*{username}" >
+						</div>
+						
+						
+						<div class="mb-3">
+	                      <label for="senha" class="form-label">Digite a senha atual</label>
+	                      <input type="password" name="senha" class="form-control" id="senha"
+	                              th:field="*{confirmPassword}" required>
+	                    </div>
+						
+						
+						<div class="mb-3">
+	                      <label for="yourPassword" class="form-label">Digite a nova senha</label>
+	                      <input type="password" name="password" class="form-control" id="yourPassword"
+	                               th:field="*{password}" required>
+	                      
+	                    </div>
+	                    
+	           			<input type="hidden" class="form-control" id="roles"  th:field="*{role}"  >
+						<input type="hidden" class="form-control" th:field="*{username}" >
+					    <input type="hidden" id="id" th:field="*{id}" value="" />
+						<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+					</form>
+							  </div>
+							</div>
+                 
+                
+                </div>
+            </div>
+        
+		</div>
+	</div>
+	
+	
+	
+   <!--  adicionando Footer  ___  Fragments FOOTER -->
+  <div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

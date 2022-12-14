@@ -24,38 +24,17 @@
 							   <form class="row g-3" action="/processo/salvar"
 						th:object="${processo}" method="POST">
 			 						
-			 						<div class="mb-3">
-									  <label for="numero" class="form-label">Numero</label>
-									  <input type="text" class="form-control" id="numero" th:field="*{numero}"
-									           placeholder="Numero processo" required >
-									</div>
 									<div class="mb-3">
-									  <label for="assunto" class="form-label">Assunto</label>
+									  <label for="assunto" class="form-label">Objeto</label>
 									  <input type="text" class="form-control" id="assunto"
-									                  th:field="*{assunto}"  placeholder="Assunto">
+									                  th:field="*{assunto}"  placeholder="Objeto">
 									</div>
 									
-									 <div class="mb-3">
-							          <label>Responsavel</label> <select th:field="*{responsavel}"
-											class="form-control">
-											<option th:each="f: ${listFuncionarios}" th:value="${f.id}"
-												th:text="${f.nome}"></option>
-										</select>
-									 </div>
-									 
-									 <div class="mb-3">
-							          <label>Setor</label> <select th:field="*{setor}"
-											class="form-control">
-											<option th:each="f: ${listSetor}" th:value="${f.id}"
-												th:text="${f.nome}"></option>
-										</select>
-									 </div>
-									 
 									 <div class="mb-3">
 										<label>Data abertura</label> 
 										<input type="date"  th:value="${dataAbertura}"
 												class="form-control" id="dataAbertura"
-												autofocus="autofocus" th:field="*{dataAbertura}"  />
+												autofocus="autofocus" th:field="*{dataAbertura}" required  />
 								     </div>
 				
 							  

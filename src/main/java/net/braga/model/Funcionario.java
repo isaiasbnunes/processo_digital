@@ -10,17 +10,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import net.braga.enums.Role;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class Funcionario implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false, columnDefinition = "TINYINT", length = 1)
